@@ -3,11 +3,12 @@
 
 """
 Created on Sep 20, 2016
+Modified: May 2020
 
 @author: deralexxx
 
 Script to pull iocs from iSight and push them to MISP
-
+Modified by: Douglas Molina
 Alexander Jaeger
 
 See CHANGELOG.md for history
