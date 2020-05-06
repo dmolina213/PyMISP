@@ -735,7 +735,8 @@ def isight_prepare_data_request(a_url, a_query, a_pub_key, a_prv_key):
     """
     header = set_header(a_prv_key, a_pub_key, a_query)
     result = isight_load_data(a_url, a_query, header)
-
+    print('######header:',header)
+    print('#####result:',result)
     if not result:
         PySight_settings.logger.error('Something went wrong when retrieving indicators from the FireEye iSight API')
         return False
