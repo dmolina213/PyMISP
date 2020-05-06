@@ -384,6 +384,7 @@ def create_misp_event(misp_instance, isight_report_instance):
     # Add default tags to the event.
     misp_instance.tag(my_event, 'basf:classification="internal"')
     #misp_instance.tag(my_event, 'basf:source="iSight"')
+    misp_instance.tag(my_event, 'CTI feed: Fireeye:iSight')
     misp_instance.tag(my_event, 'tlp:amber')
 
     # Use some iSight ThreatScapes for event tagging. Reports can have multiple ThreatScapes.
@@ -897,6 +898,8 @@ if __name__ == '__main__':
     if PySight_settings.debug_mode:
         end = timer()
         PySight_settings.logger.debug('Time taken %s', end - start)
+        Print('######Script Done #######')
+        
 
     # data_ioc(url, public_key, private_key)
     # data_text_search_simple(isight_url, public_key, private_key)
