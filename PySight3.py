@@ -882,7 +882,8 @@ if __name__ == '__main__':
     print('#######hello########')
     result = isight_search_indicators(PySight_settings.isight_url, PySight_settings.isight_pub_key,PySight_settings.isight_priv_key, PySight_settings.isight_last_hours)
   # PySight_settings.logger.debug("url:",PySight_settings.isight_url,"pubkey:", PySight_settings.isight_pub_key,"priv_key:",PySight_settings.isight_priv_key,"hrs",PySight_settings_last_hours)
-    print('result',result)
+    print('####result####',result)
+    PySight_settings.logger.debug('####result####',result)
     if result is False:
         PySight_settings.logger.debug('No indicators available from FireEye iSight')
     else:
