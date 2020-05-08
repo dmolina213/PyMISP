@@ -1,5 +1,6 @@
 !/usr/bin/env python
 # -*- coding: utf-8 -*-
+#douglas molina
 
 """
 Created on Sep 20, 2016
