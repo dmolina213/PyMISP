@@ -525,11 +525,13 @@ def process_isight_indicator(a_json):
         # Without a MISP instance this does not make sense
         if this_misp_instance is False:
             raise ValueError("No MISP instance found.")
-
+            PySight_settings.logger.debug("No MISP Instance found: ", this_misp_instance )     
+            
         # Acquire a semaphore (decrease the counter in the semaphore).
+        #threading used here
         if PySight_settings.use_threading:
             thread_limiter.acquire()
-        # PySight_settings.logger.debug("max number %s current number: ", thread_limiter._initial_value, )
+        PySight_settings.logger.debug("max number %s current number: ", thread_limiter._initial_value, )
 
         # Parse the FireEye iSight report
         isight_report_instance = pySightReport(a_json)
@@ -541,6 +543,7 @@ def process_isight_indicator(a_json):
                 os.makedirs("reports")
             f = open("reports/" + isight_report_instance.reportId, 'a')
             # Write the iSight report into the "reports" subdirectory.
+            PySight_settings.logger.debug('creating report report ID %s in reports/', isight_report_instance.reportId)
             f.write(json.dumps(a_json, sort_keys=True, indent=4, separators=(',', ': ')))
             f.close()
 
