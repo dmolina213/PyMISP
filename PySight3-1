@@ -542,9 +542,9 @@ def process_isight_indicator(a_json):
         # If in DEBUG mode, write the iSight reports to a file.
         if PySight_settings.debug_mode:
             # Create the "reports" subdirectory for storing iSight reports, if it doesn't exist already.
-            if not os.path.exists("reports"):
-                os.makedirs("reports")
-            f = open("reports/" + isight_report_instance.reportId, 'a')
+            if not os.path.exists("reports-2020"):
+                os.makedirs("reports-2020")
+            f = open("reports-2020/" + isight_report_instance.reportId, 'a')
             # Write the iSight report into the "reports" subdirectory.
             PySight_settings.logger.debug('creating report report ID %s in reports/', isight_report_instance.reportId)
             f.write(json.dumps(a_json, sort_keys=True, indent=4, separators=(',', ': ')))
@@ -560,6 +560,15 @@ def process_isight_indicator(a_json):
                                           isight_report_instance.reportId)
             print('***create new MISP event****')
             create_misp_event(this_misp_instance, isight_report_instance)
+            ###added 5-12-2020 by dmolina
+            # Create the "events" subdirectory for storing iSight reports, if it doesn't exist already.
+            if not os.path.exists("events-2020"):
+                os.makedirs("events-2020")
+            f = open("events-2020/" + isight_report_instance.reportId, 'a')
+            # Write the iSight report into the "reports" subdirectory.
+            PySight_settings.logger.debug('creating event report ID %s in events-2020/', isight_report_instance.reportId)
+            f.write(json.dumps(a_json, sort_keys=True, indent=4, separators=(',', ': ')))
+            f.close()                                                      
         else:
             # Add the data to the found event
             event = this_misp_instance.get_event(event_id, pythonify=True)
