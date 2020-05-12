@@ -564,9 +564,9 @@ def process_isight_indicator(a_json):
             # Create the "events" subdirectory for storing iSight reports, if it doesn't exist already.
             if not os.path.exists("events-2020"):
                 os.makedirs("events-2020")
-            f = open("events-2020/" + isight_report_instance.reportId, 'a')
+            f = open("events-2020/" + event, 'a')
             # Write the iSight report into the "reports" subdirectory.
-            PySight_settings.logger.debug('creating event report ID %s in events-2020/', isight_report_instance.reportId)
+            PySight_settings.logger.debug('creating event report ID %s in events-2020/', event)
             f.write(json.dumps(a_json, sort_keys=True, indent=4, separators=(',', ': ')))
             f.close()                                                      
         else:
